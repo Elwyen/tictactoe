@@ -162,7 +162,6 @@ footer{
     }
     .alert{
         margin-top: 5px;
-        overflow: scroll;
         margin-bottom: 20px;
     }
 }
