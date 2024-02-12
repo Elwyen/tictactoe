@@ -28,6 +28,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Change button content to current player ('X' or 'O')
                 button.textContent = currentPlayer;
 
+                // Color the button based on the player
+                button.style.color = currentPlayer === 'X' ? 'red' : 'blue';
+
+
                 // Check for a winner
                 if (checkWinner(currentPlayer)) {
                     alert(`Player ${currentPlayer} wins!`);
@@ -65,6 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 currentPlayerElement.textContent = currentPlayer;
                 buttons.forEach(button => {
                     button.textContent = "";
+                    button.style.color = ''; // Reset the color
                 })
 
             });
