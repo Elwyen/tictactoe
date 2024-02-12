@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let gameEnded = false;
     let counterX = 0;
     let counterO = 0;
+    const alertDiv = document.getElementsByClassName('alert')[0];
     const restartButton = document.getElementById('restartButton');
     const scoreX = document.getElementsByClassName("scoreX")[0];
     const scoreO = document.getElementsByClassName("scoreO")[0];
@@ -23,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add click event listener to each button
     buttons.forEach(button => {
         button.addEventListener('click', () => {
+            alertDiv.textContent ="";
             // Check if the game has ended or the button is already occupied
             if (!gameEnded && button.textContent === "") {
                 // Change button content to current player ('X' or 'O')
@@ -30,11 +32,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // Color the button based on the player
                 button.style.color = currentPlayer === 'X' ? 'red' : 'blue';
+                button.style.fontWeight = "bold"; 
+                button.style.transition = "all 0.5s ease-in-out";
+                button.style.fontSize = "40pt"
 
 
                 // Check for a winner
                 if (checkWinner(currentPlayer)) {
-                    alert(`Player ${currentPlayer} wins!`);
+                    alertDiv.textContent=(`The game has ended. Player ${currentPlayer} wins!`);
                     if (currentPlayer === 'X') {
                         counterX++;
                         scoreX.textContent = counterX;
@@ -51,22 +56,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // Update current player element
                 currentPlayerElement.textContent = currentPlayer;
+                currentPlayerElement.style.color = currentPlayer === 'X' ? 'red' : 'blue';
             } else if (gameEnded) {
-                alert("The game has ended. Please refresh the page to start a new game.");
+                alertDiv.textContent=`The game has ended. Player ${currentPlayer} wins!`;
             } else {
-                alert("This position is already occupied. Please choose another position.");
+                alertDiv.textContent="This position is already occupied. Please choose another position.";
                 roundCounter--;
             }
             roundCounter++;
-            if (roundCounter == 9){
+            if (roundCounter == 9 && gameEnded == false){
                 gameEnded = true;
-                alert("The game is a DRAW!");
+                alertDiv.textContent=("The game is a DRAW!");
             }
             restartButton.addEventListener('click', () => {
                 roundCounter = 0;
                 gameEnded = false;
                 currentPlayer = 'X';
+                alertDiv.textContent ="";
                 currentPlayerElement.textContent = currentPlayer;
+                currentPlayerElement.style.color ='';
                 buttons.forEach(button => {
                     button.textContent = "";
                     button.style.color = ''; // Reset the color
