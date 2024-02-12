@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 alert("The game has ended. Please refresh the page to start a new game.");
             } else {
                 alert("This position is already occupied. Please choose another position.");
+                roundCounter--;
             }
             roundCounter++;
             if (roundCounter == 9){
