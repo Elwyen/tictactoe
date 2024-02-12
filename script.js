@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 currentPlayerElement.textContent = currentPlayer;
                 currentPlayerElement.style.color = currentPlayer === 'X' ? 'red' : 'blue';
             } else if (gameEnded) {
-                alertDiv.textContent=`The game has ended. Player ${currentPlayer} wins!`;
+                alertDiv.textContent="The game has ended. Press the 'Restart Game' button to play again.";
             } else {
                 alertDiv.textContent="This position is already occupied. Please choose another position.";
                 roundCounter--;
