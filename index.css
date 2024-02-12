@@ -93,13 +93,13 @@ main{
     justify-content: center;
     display: flex;
     flex-wrap: wrap;
-    width: 300px; /* Adjust as needed */
+    width: 300px;
     margin: auto;
 }
 
 .gamearea button{
-    width: calc(100% / 3); /* Adjust as needed */
-    height: 93.33px; /* Adjust as needed */
+    width: calc(100% / 3);
+    height: 93.33px;
     border: 1px solid black;
     box-sizing: border-box;
 }
@@ -150,4 +150,19 @@ footer{
     width: 100%;
     max-width: 810px;
     
+}
+@media screen and (max-width:500px) {
+    main,body{
+        width: 425px;
+        height: 100%;
+    }
+    footer{
+        width: 405px;
+        border-radius: 20px;
+    }
+    .alert{
+        margin-top: 5px;
+        overflow: scroll;
+        margin-bottom: 20px;
+    }
 }
