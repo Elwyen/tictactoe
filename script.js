@@ -3,8 +3,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const currentPlayerElement = document.getElementById('currentPlayer');
     let currentPlayer = 'X'; // Start with 'X'
     let gameEnded = false;
+    let counterX = 0;
+    let counterO = 0;
     const restartButton = document.getElementById('restartButton');
-    const scoreBoard = document.getElementById('scoreDisplay');
+    const scoreX = document.getElementsByClassName("scoreX")[0];
+    const scoreO = document.getElementsByClassName("scoreO")[0];
     // Winning combinations
     const winningCombinations = [
         [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
@@ -28,8 +31,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Check for a winner
                 if (checkWinner(currentPlayer)) {
                     alert(`Player ${currentPlayer} wins!`);
-                    if  (currentPlayer === 'X') {
-                        
+                    if (currentPlayer === 'X') {
+                        counterX++;
+                        scoreX.textContent = counterX;
+                    } else {
+                        counterO++;
+                        scoreO.textContent = counterO;
                     }
                     gameEnded = true;
                     return; // Exit the function
@@ -55,8 +62,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 gameEnded = false;
                 currentPlayer = 'X';
                 currentPlayerElement.textContent = currentPlayer;
-                resetBoard();
-                button.textContent = "";
+                buttons.forEach(button => {
+                    button.textContent = "";
+                })
+
             });
         });
     });
@@ -69,7 +78,3 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     });
 
-    function resetBoard(){
-
-
-    }
