@@ -153,11 +153,11 @@ footer{
 }
 @media screen and (max-width:500px) {
     main,body{
-        width: 425px;
+        width: 380px;
         height: 100%;
     }
     footer{
-        width: 405px;
+        width: 355px;
         border-radius: 20px;
     }
     .alert{
